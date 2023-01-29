@@ -4,7 +4,7 @@ thanks to the awesome SocketIO library - which makes creating live-chats and mul
 
 *Just make sure though that both the client-side and backend-side versions of SocketIO are exactly the same, otherwise small but really annoying glitches will happen.* 
 
-So, in this game you'll be connected to a random player and get to challenge them! By the way it also includes a message board on the top left to chat with your opponent 😎🎮
+So, in this game you'll be connected to a random player and get to challenge them! By the way, game also includes a message board on the top left to chat with your opponent 😎🎮
 
 **Here is a link to the game:** http://tic-tac-toe-mg.eu-4.evennode.com/
 
