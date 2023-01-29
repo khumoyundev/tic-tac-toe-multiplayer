@@ -1,0 +1,315 @@
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --cell-size: 110px;
+    --font: "Manrope", sans-serif;
+    --background-gradient: linear-gradient(to bottom right, #2c3e50, #000);
+    --mark-size: calc(var(--cell-size) * 0.9);
+}
+
+html,
+body {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    font-size: 1.2rem;
+    font-family: var(--font);
+    background: var(--background-gradient);
+}
+
+input[type="checkbox"] {
+    width: 15px;
+    height: 15px;
+}
+
+input:invalid {
+    border-color: red;
+}
+
+.registration {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    background-color: white;
+    color: #2c3e50;
+    max-width: 350px;
+    border-radius: 5px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.card--header {
+    padding: 0.3em 0.6em 0.4em 0.5em;
+}
+
+.card--field,
+.card--footer {
+    border-top: 1px solid #2c3e50;
+    padding: 1.2em 0.65em;
+    font-size: 1.1rem;
+}
+
+.card--field {
+    display: flex;
+    gap: 14px;
+    flex-direction: column;
+}
+
+.card--field--input {
+    position: relative;
+    width: 100%;
+}
+
+.card--field--input input,
+#message {
+    outline: none;
+    font-family: "Manrope";
+    border: 1px solid #2c3e50;
+    border-radius: 3px;
+    font-size: 1rem;
+    padding: 0.5em;
+    width: 100%;
+    padding-right: 16%;
+}
+
+.card--field--input i {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 14%;
+    height: 100%;
+    background-color: #2f4255;
+    color: white;
+    border-radius: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card--footer {
+    color: #2f4255;
+    font-size: 0.86rem;
+    padding: 0.85em 0.6em 1.15em 0.8em;
+}
+
+.fa-circle-info {
+    font-size: 1rem;
+    padding: 0.1em;
+}
+
+.board {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    justify-items: center;
+    grid-template-columns: repeat(3, auto);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.board--cell {
+    width: var(--cell-size);
+    height: var(--cell-size);
+    border: 2px solid #e2effb;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+}
+
+.board--cell:first-child,
+.board--cell:nth-child(2),
+.board--cell:nth-child(3) {
+    border-top: none;
+}
+
+.board--cell:nth-child(3n + 1) {
+    border-left: none;
+}
+
+.board--cell:nth-child(3n + 3) {
+    border-right: none;
+}
+
+.board--cell:last-child,
+.board--cell:nth-child(8),
+.board--cell:nth-child(7) {
+    border-bottom: none;
+}
+
+.board--cell-x::after,
+.board--cell-x::before,
+.board.x-turn
+    .board--cell:not(.board--cell-x):not(.board--cell-circle):hover::after,
+.board.x-turn
+    .board--cell:not(.board--cell-x):not(.board--cell-circle):hover::before {
+    content: "";
+    position: absolute;
+    width: calc(var(--mark-size) * 0.14);
+    height: var(--mark-size);
+    background-color: #d94b4b;
+    border-radius: 3px;
+}
+
+.board--cell-x::after,
+.board.x-turn
+    .board--cell:not(.board--cell-x):not(.board--cell-circle):hover::after {
+    transform: rotate(45deg);
+}
+
+.board--cell-x::before,
+.board.x-turn
+    .board--cell:not(.board--cell-x):not(.board--cell-circle):hover::before {
+    transform: rotate(-45deg);
+}
+
+.board--cell-circle::before,
+.board--cell-circle::after,
+.board.circle-turn
+    .board--cell:not(.board--cell-x):not(.board--cell-circle):hover::after,
+.board.circle-turn
+    .board--cell:not(.board--cell-x):not(.board--cell-circle):hover::before {
+    content: "";
+    border-radius: 50%;
+    position: absolute;
+}
+
+.board--cell-circle::after,
+.board.circle-turn
+    .board--cell:not(.board--cell-x):not(.board--cell-circle):hover::after {
+    width: calc(var(--mark-size) * 0.6);
+    height: calc(var(--mark-size) * 0.6);
+    background-color: #2f4255;
+}
+
+.board--cell-circle::before,
+.board.circle-turn
+    .board--cell:not(.board--cell-x):not(.board--cell-circle):hover::before {
+    width: calc(var(--mark-size) * 0.9);
+    height: calc(var(--mark-size) * 0.9);
+    background-color: white;
+}
+
+.board--cell-circle,
+.board--cell-x {
+    cursor: not-allowed;
+}
+
+.board.x-turn
+    .board--cell:not(.board--cell-x):not(.board--cell-circle):hover::after,
+.board.x-turn
+    .board--cell:not(.board--cell-x):not(.board--cell-circle):hover::before,
+.board.circle-turn
+    .board--cell:not(.board--cell-x):not(.board--cell-circle):hover::before {
+    background-color: #76828f;
+}
+
+.overlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 99;
+    display: flex;
+    gap: 0.7em;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #e2effb;
+    opacity: 0;
+    pointer-events: none;
+    text-align: center;
+}
+
+.loader {
+    width: 59px;
+    height: 59px;
+    border: 3px solid #fff;
+    border-radius: 50%;
+    display: inline-block;
+    position: relative;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+}
+
+.loader::after,
+.loader::before {
+    content: "";
+    box-sizing: border-box;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: #76828f;
+    width: 8px;
+    height: 8px;
+    transform: translate(150%, 150%);
+    border-radius: 50%;
+}
+
+.loader::before {
+    left: auto;
+    top: auto;
+    right: 0;
+    bottom: 0;
+    transform: translate(-150%, -150%);
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+img {
+    position: relative;
+    opacity: 0.7;
+    overflow: visible;
+}
+
+img::after {
+    content: "hi bitch";
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    bottom: -20%;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-weight: bold;
+}
+
+.message {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    width: 250px;
+}
+
+#message {
+    padding-right: 10px;
+    opacity: 0;
+}

@@ -1,0 +1,15 @@
+{
+    "name": "socket.io-example",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "devStart": "nodemon index.js",
+        "start": "node index.js"
+    },
+    "dependencies": {
+        "express": "3.4.8",
+        "nodemon": "^2.0.20",
+        "socket.io": "^4.5.4" 
+    }
+}

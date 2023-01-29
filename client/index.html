@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+            name="description"
+            content="Play the classic Tic-Tac-Toe Multiplayer game with one or two players for free!"
+        />
+        <title>Tic Tac Toe - Multiplayer</title>
+
+        <!-- MANROPE FONT -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Manrope&display=swap"
+            rel="stylesheet"
+        />
+
+        <!-- TOASTIFY -->
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="./libs/toastify-js/toastify.min.css"
+        />
+
+        <!-- FONT AWESOME -->
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+            integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        />
+
+        <!-- ICON -->
+        <link rel="shortcut icon" href="./res/icon.png" type="image/x-icon">
+
+        <!-- DUDIALOG -->
+        <link rel="stylesheet" href="./libs/duDialog/duDialog.css" />
+        <link rel="stylesheet" href="./styles/style.css" />
+    </head>
+    <body>
+        <!-- QUICK REGISTRATION -->
+        <section class="registration" id="registration">
+            <div class="card">
+                <h2 class="card--header">Registration</h2>
+                <div class="card--field">
+                    <div class="card--field--input">
+                        <input
+                            type="text"
+                            placeholder="Type your nickname"
+                            id="username"
+                            maxlength="20"
+                        />
+                        <i
+                            class="fa-sharp fa-solid fa-arrow-right"
+                            id="username-enter"
+                        ></i>
+                    </div>
+                    <label>
+                        <input type="checkbox" id="remember-me" />&nbsp;
+                        Remember me</label
+                    >
+                </div>
+                <div class="card--footer">
+                    <i class="fa-solid fa-circle-info"></i> Press "Enter" to
+                    continue. If you don't provide a nickname, a random one will
+                    be assigned to you.
+                </div>
+            </div>
+        </section>
+
+        <!-- GAME BOARD -->
+        <section class="board x-turn" id="board">
+            <div class="board--cell" data-cell></div>
+            <div class="board--cell" data-cell></div>
+            <div class="board--cell" data-cell></div>
+            <div class="board--cell" data-cell></div>
+            <div class="board--cell" data-cell></div>
+            <div class="board--cell" data-cell></div>
+            <div class="board--cell" data-cell></div>
+            <div class="board--cell" data-cell></div>
+            <div class="board--cell" data-cell></div>
+        </section>
+
+        <!-- OVERLAYS -->
+        <div class="overlay" id="overlay">
+            <h1 class="overlay--header" id="overlay-message"></h1>
+        </div>
+
+        <div class="opponent-wait overlay" id="opponent">
+            <h3 class="overlay--header">Assigning you to a random user...</h3>
+            <div class="loader"></div>
+        </div>
+
+        <div class="message">
+            <input id="message" placeholder="Send a message." />
+        </div>
+
+        <script src="./libs/notify/notify.js"></script>
+        <script src="./libs/duDialog/duDialog.min.js"></script>
+        <script
+            type="text/javascript"
+            src="./libs/toastify-js/toastify-js.js"
+        ></script>
+
+        <script src="./scripts/main.js" type="module"></script>
+    </body>
+</html>
