@@ -2,7 +2,7 @@ import gsap from "../libs/gsap/gsap.js";
 import { isUsernameValid } from "./_utils.js";
 import { io } from "../libs/socket.io/socket.io.esm.min.js";
 
-const socket = io();
+const socket = io(); 
 
 const X_CLASS = "board--cell-x",
     CIRCLE_CLASS = "board--cell-circle",
