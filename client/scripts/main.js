@@ -40,9 +40,11 @@ let previousX,
         z-index: 9999;
         color: white;
         text-align: center;
-    `;
+    `,
+    cursorURL = "../res/cursor.png",
+    devCursorURL = "../res/cursor-dev.png";
 
-opponentCursor.src = "../res/cursor.png";
+opponentCursor.src = cursorURL;
 
 opponentCursor.style.cssText = cssStyle;
 divEl.style.cssText = cssStyle;
@@ -53,7 +55,7 @@ const setOpponentMouse = (_mouse, _nickname) => {
     opponentNickname = _nickname;
 
     if (_nickname === "khumoyun" && !alreadySet) {
-        opponentCursor.src = "../res/cursor-dev.png";
+        opponentCursor.src = devCursorURL;
         alreadySet = true;
     } else {
         divEl.textContent = opponentNickname === "khumoyun" ? "Developer" : (_nickname || "player");
@@ -211,7 +213,7 @@ const endGame = (_) => {
         overlayMessageEl.innerHTML = getWinner();
         setTimeout(() => {
             document.location.reload();
-        }, 4000);
+        }, 3000);
         return;
     }
 
@@ -379,8 +381,7 @@ const animateCursor = () => {
 
 const notify = _message => {
     socket.emit("notify", _message);
-
-    // Sends to the current user
+    
     Toastify({
         text: _message,
         duration: 3000,
